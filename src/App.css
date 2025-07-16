@@ -4,3 +4,8 @@
     font-family: "Philosopher", sans-serif;
 }
 
+ul li a.active{
+    color: red;
+
+}
+
