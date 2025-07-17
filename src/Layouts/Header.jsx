@@ -1,8 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import Logo from "./Logo";
+import AuthContext from "../Context/AuthContext";
 
 const Header = () => {
+  const { user, logOutUser } = use(AuthContext);
   return (
     <header className="lg:w-9/12 mx-auto p-5">
       <div className="navbar bg-white rounded-[6px] px-3 pb-3">
@@ -70,7 +72,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end gap-3">
-          {/* {user ? (
+          {user ? (
             <>
               <img
                 title={user.displayName}
@@ -78,32 +80,15 @@ const Header = () => {
                 className="w-16 rounded-full"
                 alt="avatar"
               />
-              <NavLink onClick={handleLogOut} className="btn bg-primary">
-                Log Out
-              </NavLink>
-
-              <NavLink to="/bearider" className="btn bg-primary">
-                Be A Rider
-              </NavLink>
+              <NavLink className="btn">Log Out</NavLink>
             </>
           ) : (
-            <NavLink to="/login" className="btn bg-primary">
+            <NavLink to="/login" className="btn">
               sign In
             </NavLink>
-          )} */}
-          {/* <NavLink to="/bearider" className="btn bg-primary">
-            Be A Rider
-          </NavLink> */}
+          )}
 
-          <NavLink className="btn">sign In</NavLink>
-          <label className="swap swap-rotate">
-            {/* this hidden checkbox controls the state */}
-            <input
-              type="checkbox"
-              className="theme-controller"
-              value="synthwave"
-            />
-          </label>
+          {/* <NavLink className="btn">sign In</NavLink> */}
         </div>
       </div>
     </header>

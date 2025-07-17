@@ -4,6 +4,8 @@ import RootLayOut from "../Layouts/RootLayOut";
 import Home from "../Pages/Home";
 import AllProperties from "../Pages/AllProperties";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
+import LogIn from "../Authentication/LogIn";
+import SignUp from "../Authentication/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     Component: Dashboard,
+  },
+  {
+    path: "/login",
+    Component: LogIn,
+  },
+  {
+    path: "/signup",
+    Component: SignUp,
   },
 ]);
 
