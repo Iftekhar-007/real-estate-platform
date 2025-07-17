@@ -1,10 +1,24 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import Logo from "./Logo";
 import AuthContext from "../Context/AuthContext";
 
 const Header = () => {
   const { user, logOutUser } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+
+    logOutUser()
+      .then((res) => {
+        navigate("/");
+        console.log("user logged out");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <header className="lg:w-9/12 mx-auto p-5">
       <div className="navbar bg-white rounded-[6px] px-3 pb-3">
@@ -38,14 +52,14 @@ const Header = () => {
                 <NavLink to="/allproperties">All Properties</NavLink>
               </li>
 
-              {/* {user && (
-              <li>
+              {user && (
+                <li>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
+                </li>
+              )}
+              {/* <li>
                 <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
-            )} */}
-              <li>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -60,15 +74,15 @@ const Header = () => {
               <NavLink to="/allproperties">All Properties</NavLink>
             </li>
 
-            <li>
+            {/* <li>
               <NavLink to="/dashboard">Dashboard</NavLink>
-            </li>
+            </li> */}
 
-            {/* {user && (
+            {user && (
               <li>
                 <NavLink to="/dashboard">Dashboard</NavLink>
               </li>
-            )} */}
+            )}
           </ul>
         </div>
         <div className="navbar-end gap-3">
@@ -77,10 +91,12 @@ const Header = () => {
               <img
                 title={user.displayName}
                 src={user.photoURL}
-                className="w-16 rounded-full"
+                className="w-8 rounded-full"
                 alt="avatar"
               />
-              <NavLink className="btn">Log Out</NavLink>
+              <NavLink onClick={handleLogOut} className="btn">
+                Log Out
+              </NavLink>
             </>
           ) : (
             <NavLink to="/login" className="btn">

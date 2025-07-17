@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import AuthContext from "./AuthContext";
+import { auth } from "../Firebase/firebase.config";
+
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -10,8 +12,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth } from "../Firebase/firebase.config";
-// import { auth } from "../../Firebase/firebase.config";
 
 // import { signInWithEmailAndPassword } from "firebase/auth/cordova";
 

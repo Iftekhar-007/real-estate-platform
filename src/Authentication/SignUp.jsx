@@ -2,12 +2,14 @@ import React, { use, useState } from "react";
 // import Logo from "../Logo/Logo";
 import { NavLink, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-// import Context from "../Contexts/Context";
+
 // import axios from "axios";
 // import UseAxios from "../Hooks/UseAxios";
 // import SocialLogin from "../GoogleButton/SocialLogin";
 import AuthContext from "../Context/AuthContext";
 import Logo from "../Layouts/Logo";
+import axios from "axios";
+import SocialLogin from "./GoogleButton/SocialLogin";
 // import Logos from "../Logos/Logos";
 
 const SignUp = () => {
@@ -32,12 +34,12 @@ const SignUp = () => {
 
         // update in db
 
-        const userInfo = {
-          name: data.name,
-          email: data.email,
-          role: "user", // default
-          cratedAt: new Date().toISOString(),
-        };
+        // const userInfo = {
+        //   name: data.name,
+        //   email: data.email,
+        //   role: "user", // default
+        //   cratedAt: new Date().toISOString(),
+        // };
 
         // const userRes = await axiosInstance.post("/users", userInfo);
         // console.log(userRes.data);
@@ -70,13 +72,13 @@ const SignUp = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    // const imgUploadURL = `https://api.imgbb.com/1/upload?key=${
-    //   import.meta.env.VITE_img_key
-    // }`;
+    const imgUploadURL = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMG_KEY
+    }`;
 
-    // const res = await axios.post(imgUploadURL, formData);
+    const res = await axios.post(imgUploadURL, formData);
 
-    // setProfilePic(res.data.data.url);
+    setProfilePic(res.data.data.url);
   };
   return (
     <div className="w-9/12 mx-auto my-5">

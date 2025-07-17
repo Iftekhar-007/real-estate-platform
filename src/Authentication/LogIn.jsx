@@ -2,13 +2,15 @@ import React, { use } from "react";
 // import Logo from "../Logo/Logo";
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import Context from "../Contexts/Context";
-import SocialLogin from "../GoogleButton/SocialLogin";
+// import Context from "../Contexts/Context";
+// import SocialLogin from "../GoogleButton/SocialLogin";
 import Logo from "../Layouts/Logo";
+import AuthContext from "../Context/AuthContext";
+import SocialLogin from "./GoogleButton/SocialLogin";
 // import { register } from "swiper/element";
 
 const LogIn = () => {
-  const { signInWithEmailAndPass } = use(Context);
+  const { signInWithEmailAndPass } = use(AuthContext);
   const location = useLocation();
 
   const navigate = useNavigate();

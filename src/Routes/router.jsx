@@ -6,6 +6,15 @@ import AllProperties from "../Pages/AllProperties";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import LogIn from "../Authentication/LogIn";
 import SignUp from "../Authentication/SignUp";
+import PrivateRoutes from "./PrivateRoutes";
+import UserProfile from "../Pages/Profiles/UserProfile";
+import Wishlist from "../Pages/Wishlist";
+import Purchased_Properties from "../Pages/Purchased_Properties";
+import MyReviews from "../Pages/MyReviews";
+import AgentProfile from "../Pages/Profiles/AgentProfile";
+import AddProperty from "../Pages/AddProperty";
+import NotFound from "../Pages/Error/NotFound";
+import MyAddedProperties from "../Pages/MyAddedProperties";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +33,42 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    Component: Dashboard,
+    // Component: Dashboard,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        path: "userprofile",
+        Component: UserProfile,
+      },
+      {
+        path: "wishlist",
+        Component: Wishlist,
+      },
+      {
+        path: "purchased-properties",
+        Component: Purchased_Properties,
+      },
+      {
+        path: "my-reviews",
+        Component: MyReviews,
+      },
+      {
+        path: "agent-profile",
+        Component: AgentProfile,
+      },
+      {
+        path: "add-property",
+        Component: AddProperty,
+      },
+      {
+        path: "my-properties",
+        Component: MyAddedProperties,
+      },
+    ],
   },
   {
     path: "/login",
@@ -33,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     Component: SignUp,
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
 
