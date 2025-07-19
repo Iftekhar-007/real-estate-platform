@@ -10,7 +10,6 @@ const AddProperty = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = AxiosSecure();
   const [mainPreview, setMainPreview] = useState(null);
-  const [galleryPreview, setGalleryPreview] = useState([]);
 
   const { mutate, isPending, isSuccess, isError } = useMutation({
     mutationFn: async (formData) => {
@@ -29,7 +28,7 @@ const AddProperty = () => {
       });
       reset();
       setMainPreview(null);
-      setGalleryPreview([]);
+      // setGalleryPreview([]);
     },
   });
 
@@ -43,9 +42,8 @@ const AddProperty = () => {
     formData.append("agentEmail", user?.email);
     formData.append("mainImage", data.mainImage[0]);
 
-    for (let file of data.gallery) {
-      formData.append("gallery", file);
-    }
+    formData.append("verificationStatus", "pending");
+    formData.append("saleStatus", "available");
 
     mutate(formData);
   };
@@ -87,35 +85,6 @@ const AddProperty = () => {
                 className="w-40 h-32 object-cover mt-2 rounded"
               />
             )}
-          </div>
-
-          <div>
-            <label className="block mb-1 font-medium">
-              Property Gallery Images
-            </label>
-            <input
-              type="file"
-              multiple
-              {...register("gallery", { required: true })}
-              className="file-input file-input-bordered w-full"
-              accept="image/*"
-              onChange={(e) => {
-                const files = Array.from(e.target.files).map((file) =>
-                  URL.createObjectURL(file)
-                );
-                setGalleryPreview(files);
-              }}
-            />
-            <div className="flex gap-2 mt-2 flex-wrap">
-              {galleryPreview.map((img, idx) => (
-                <img
-                  key={idx}
-                  src={img}
-                  alt={`Gallery ${idx}`}
-                  className="w-20 h-20 object-cover rounded"
-                />
-              ))}
-            </div>
           </div>
 
           <div>
