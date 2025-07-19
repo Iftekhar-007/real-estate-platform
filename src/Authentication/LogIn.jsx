@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 // import Logo from "../Logo/Logo";
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
@@ -21,6 +21,9 @@ const LogIn = () => {
 
     formState: { errors },
   } = useForm();
+
+  const [loginError, setLoginError] = useState("");
+
   const onSubmit = (data) => {
     console.log(data);
     const email = data.email;
@@ -32,7 +35,15 @@ const LogIn = () => {
         navigate(from);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log("🔥 Firebase error code:", error.code);
+
+        if (error.code === "auth/invalid-credential") {
+          setLoginError("Email or Password is incorrect.");
+        } else if (error.code === "auth/too-many-requests") {
+          setLoginError("Too many failed attempts. Try again later.");
+        } else {
+          setLoginError("Login failed. Please try again.");
+        }
       });
   };
   return (
@@ -75,6 +86,11 @@ const LogIn = () => {
                     Password must be more than 6 characters
                   </p>
                 )}
+
+                {loginError && (
+                  <p className="text-red-500 mt-1">{loginError}</p>
+                )}
+
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>

@@ -15,6 +15,17 @@ import AgentProfile from "../Pages/Profiles/AgentProfile";
 import AddProperty from "../Pages/AddProperty";
 import NotFound from "../Pages/Error/NotFound";
 import MyAddedProperties from "../Pages/MyAddedProperties";
+import SoldProperties from "../Pages/SoldProperties";
+import RequestedProperties from "../Pages/RequestedProperties";
+import AdminProfile from "../Pages/AdminProfile";
+import ManageProperties from "../Pages/ManageProperties";
+import ManageUsers from "../Pages/ManageUsers";
+import ManageReviews from "../Pages/ManageReviews";
+import Forbidden from "../Pages/Error/Forbidden";
+import AdminRoute from "./AdminRoute";
+import AgentRoute from "./AgentRoute";
+import UserRoute from "./UserRoute";
+import DashHome from "../Layouts/Dashboard/DashHome";
 
 const router = createBrowserRouter([
   {
@@ -41,32 +52,129 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        index: true,
+        element: (
+          <PrivateRoutes>
+            <DashHome></DashHome>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "userprofile",
-        Component: UserProfile,
+        // Component: UserProfile,
+        element: (
+          <UserRoute>
+            <UserProfile></UserProfile>
+          </UserRoute>
+        ),
       },
       {
         path: "wishlist",
-        Component: Wishlist,
+        // Component: Wishlist,
+        element: (
+          <UserRoute>
+            <Wishlist></Wishlist>
+          </UserRoute>
+        ),
       },
       {
         path: "purchased-properties",
-        Component: Purchased_Properties,
+        // Component: Purchased_Properties,
+        element: (
+          <UserRoute>
+            <Purchased_Properties></Purchased_Properties>
+          </UserRoute>
+        ),
       },
       {
         path: "my-reviews",
-        Component: MyReviews,
+        // Component: MyReviews,
+        element: (
+          <UserRoute>
+            <MyReviews></MyReviews>
+          </UserRoute>
+        ),
       },
       {
         path: "agent-profile",
-        Component: AgentProfile,
+        // Component: AgentProfile,
+        element: (
+          <AgentRoute>
+            <AgentProfile></AgentProfile>
+          </AgentRoute>
+        ),
       },
       {
         path: "add-property",
-        Component: AddProperty,
+        // Component: AddProperty,
+        element: (
+          <AgentRoute>
+            <AddProperty></AddProperty>
+          </AgentRoute>
+        ),
       },
       {
         path: "my-properties",
-        Component: MyAddedProperties,
+        // Component: MyAddedProperties,
+        element: (
+          <AgentRoute>
+            <MyAddedProperties></MyAddedProperties>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "sold-properties",
+        // Component: SoldProperties,
+        element: (
+          <AgentRoute>
+            <SoldProperties></SoldProperties>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "requested-properties",
+        // Component: RequestedProperties,
+        element: (
+          <AgentRoute>
+            <RequestedProperties></RequestedProperties>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "admin-profile",
+        // Component: AdminProfile,
+        element: (
+          <AdminRoute>
+            <AdminProfile></AdminProfile>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-properties",
+        // Component: ManageProperties,
+        element: (
+          <AdminRoute>
+            <ManageProperties></ManageProperties>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        // Component: ManageUsers,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-reviews",
+        // Component: ManageReviews,
+        element: (
+          <AdminRoute>
+            <ManageReviews></ManageReviews>
+          </AdminRoute>
+        ),
       },
     ],
   },
@@ -81,6 +189,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     Component: NotFound,
+  },
+  {
+    path: "/forbidden",
+    element: <Forbidden></Forbidden>,
   },
 ]);
 

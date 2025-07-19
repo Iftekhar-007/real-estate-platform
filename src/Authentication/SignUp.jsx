@@ -10,10 +10,12 @@ import AuthContext from "../Context/AuthContext";
 import Logo from "../Layouts/Logo";
 import axios from "axios";
 import SocialLogin from "./GoogleButton/SocialLogin";
-// import Logos from "../Logos/Logos";
+import UseAxios from "../Routes/UseAxios";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const axiosInstance = UseAxios();
   //   const axiosInstance = UseAxios();
   const [profilePic, setProfilePic] = useState("");
   const { createUserWithEmailPass, updateUserProfile } = use(AuthContext);
@@ -24,44 +26,95 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  // const onSubmit = (data) => {
+  //   const email = data.email;
+  //   const password = data.password;
+
+  //   createUserWithEmailPass(email, password)
+  //     .then(async (res) => {
+  //       console.log(res.user);
+
+  //       // update in db
+
+  //       // const userInfo = {
+  //       //   name: data.name,
+  //       //   email: data.email,
+  //       //   role: "user", // default
+  //       //   cratedAt: new Date().toISOString(),
+  //       // };
+
+  //       // const userRes = await axiosInstance.post("/users", userInfo);
+  //       // console.log(userRes.data);
+
+  //       // update in firebase
+
+  //       const userProfile = {
+  //         displayName: data.name,
+  //         photoURL: profilePic,
+  //       };
+
+  //       updateUserProfile(userProfile)
+  //         .then(() => {
+  //           console.log("updated profile name and picture");
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // };
+
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
 
     createUserWithEmailPass(email, password)
       .then(async (res) => {
-        console.log(res.user);
+        const user = res.user;
 
-        // update in db
-
-        // const userInfo = {
-        //   name: data.name,
-        //   email: data.email,
-        //   role: "user", // default
-        //   cratedAt: new Date().toISOString(),
-        // };
-
-        // const userRes = await axiosInstance.post("/users", userInfo);
-        // console.log(userRes.data);
-
-        // update in firebase
-
-        const userProfile = {
-          displayName: data.name,
-          photoURL: profilePic,
+        // ✅ Create user info for DB
+        const userInfo = {
+          name: data.name,
+          email: email,
+          image: profilePic || "", // default "" if not uploaded
+          role: "user",
+          createdAt: new Date().toISOString(),
         };
 
-        updateUserProfile(userProfile)
+        // ✅ Immediately save to database
+        axiosInstance
+          .post("/users", userInfo)
           .then(() => {
-            console.log("updated profile name and picture");
+            console.log("User saved to DB");
+            toast.success("Account created successfully!");
+            navigate("/");
+
+            // 🔄 Now update profile in Firebase (optional, visual only)
+            const userProfile = {
+              displayName: data.name,
+              photoURL: profilePic,
+            };
+
+            updateUserProfile(userProfile)
+              .then(() => {
+                console.log("Firebase profile updated");
+                navigate("/");
+              })
+              .catch((err) => {
+                console.error("Profile update error:", err);
+                // Still navigate since user is saved and created
+                navigate("/");
+              });
           })
           .catch((err) => {
-            console.log(err);
+            console.error("DB save error:", err);
           });
-        navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        console.error("Firebase error:", error.message);
       });
   };
 
@@ -126,17 +179,29 @@ const SignUp = () => {
                   {/* password */}
                   <label className="label">Password</label>
                   <input
-                    {...register("password", { required: true, minLength: 6 })}
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters",
+                      },
+                      validate: {
+                        hasUpperCase: (value) =>
+                          /[A-Z]/.test(value) ||
+                          "Must contain at least one uppercase letter",
+                        hasSpecialChar: (value) =>
+                          /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                          "Must contain at least one special character",
+                      },
+                    })}
                     type="password"
                     className="input"
                     placeholder="Password"
                   />
-                  {errors.password?.type === "required" && (
-                    <p className="text-red-500">password is required</p>
+                  {errors.password && (
+                    <p className="text-red-500">{errors.password.message}</p>
                   )}
-                  {errors.password?.type === "minLength" && (
-                    <p>password must be 6 characters or long</p>
-                  )}
+
                   <div>
                     <a className="link link-hover">Forgot password?</a>
                   </div>
@@ -148,6 +213,7 @@ const SignUp = () => {
               </NavLink>
 
               <SocialLogin></SocialLogin>
+              <ToastContainer></ToastContainer>
             </div>
           </div>
         </div>
