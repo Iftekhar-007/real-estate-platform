@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import AuthContext from "../Context/AuthContext";
 import AxiosSecure from "../Routes/AxiosSecure";
+import Swal from "sweetalert2";
 
 const AddProperty = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -19,6 +20,13 @@ const AddProperty = () => {
       return res.data;
     },
     onSuccess: () => {
+      // ✅ For success message
+      Swal.fire({
+        title: "Success!",
+        text: "Property added successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
       reset();
       setMainPreview(null);
       setGalleryPreview([]);
@@ -43,116 +51,121 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Add a Property</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <input
-          {...register("title", { required: true })}
-          placeholder="Property Title"
-          className="input input-bordered w-full"
-        />
-        <input
-          {...register("location", { required: true })}
-          placeholder="Property Location"
-          className="input input-bordered w-full"
-        />
-
-        <div>
-          <label className="block mb-1 font-medium">
-            Main Image (Thumbnail)
-          </label>
+    <>
+      <title>Add Property || Real Estate</title>
+      <div className="max-w-xl mx-auto p-6 bg-white rounded shadow">
+        <h2 className="text-2xl font-bold mb-4">Add a Property</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <input
-            type="file"
-            {...register("mainImage", { required: true })}
-            className="file-input file-input-bordered w-full"
-            accept="image/*"
-            onChange={(e) =>
-              setMainPreview(URL.createObjectURL(e.target.files[0]))
-            }
+            {...register("title", { required: true })}
+            placeholder="Property Title"
+            className="input input-bordered w-full"
           />
-          {mainPreview && (
-            <img
-              src={mainPreview}
-              alt="Main Preview"
-              className="w-40 h-32 object-cover mt-2 rounded"
+          <input
+            {...register("location", { required: true })}
+            placeholder="Property Location"
+            className="input input-bordered w-full"
+          />
+
+          <div>
+            <label className="block mb-1 font-medium">
+              Main Image (Thumbnail)
+            </label>
+            <input
+              type="file"
+              {...register("mainImage", { required: true })}
+              className="file-input file-input-bordered w-full"
+              accept="image/*"
+              onChange={(e) =>
+                setMainPreview(URL.createObjectURL(e.target.files[0]))
+              }
             />
-          )}
-        </div>
-
-        <div>
-          <label className="block mb-1 font-medium">
-            Property Gallery Images
-          </label>
-          <input
-            type="file"
-            multiple
-            {...register("gallery", { required: true })}
-            className="file-input file-input-bordered w-full"
-            accept="image/*"
-            onChange={(e) => {
-              const files = Array.from(e.target.files).map((file) =>
-                URL.createObjectURL(file)
-              );
-              setGalleryPreview(files);
-            }}
-          />
-          <div className="flex gap-2 mt-2 flex-wrap">
-            {galleryPreview.map((img, idx) => (
+            {mainPreview && (
               <img
-                key={idx}
-                src={img}
-                alt={`Gallery ${idx}`}
-                className="w-20 h-20 object-cover rounded"
+                src={mainPreview}
+                alt="Main Preview"
+                className="w-40 h-32 object-cover mt-2 rounded"
               />
-            ))}
+            )}
           </div>
-        </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Price Range</label>
-          <div className="flex gap-2">
+          <div>
+            <label className="block mb-1 font-medium">
+              Property Gallery Images
+            </label>
             <input
-              {...register("basePrice", { required: true })}
-              placeholder="Base Price"
-              type="number"
-              className="input input-bordered w-full"
+              type="file"
+              multiple
+              {...register("gallery", { required: true })}
+              className="file-input file-input-bordered w-full"
+              accept="image/*"
+              onChange={(e) => {
+                const files = Array.from(e.target.files).map((file) =>
+                  URL.createObjectURL(file)
+                );
+                setGalleryPreview(files);
+              }}
             />
+            <div className="flex gap-2 mt-2 flex-wrap">
+              {galleryPreview.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={`Gallery ${idx}`}
+                  className="w-20 h-20 object-cover rounded"
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium">Price Range</label>
+            <div className="flex gap-2">
+              <input
+                {...register("basePrice", { required: true })}
+                placeholder="Base Price"
+                type="number"
+                className="input input-bordered w-full"
+              />
+              <input
+                {...register("maxPrice", { required: true })}
+                placeholder="Max Price"
+                type="number"
+                className="input input-bordered w-full"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-medium">Agnet Name</label>
             <input
-              {...register("maxPrice", { required: true })}
-              placeholder="Max Price"
-              type="number"
-              className="input input-bordered w-full"
+              value={user?.displayName}
+              readOnly
+              className="input input-bordered w-full bg-gray-100"
             />
           </div>
-        </div>
+          <div>
+            <label className="block mb-1 font-medium">Agent Email</label>
+            <input
+              value={user?.email}
+              readOnly
+              className="input input-bordered w-full bg-gray-100"
+            />
+          </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Agnet Name</label>
-          <input
-            value={user?.displayName}
-            readOnly
-            className="input input-bordered w-full bg-gray-100"
-          />
-        </div>
-        <div>
-          <label className="block mb-1 font-medium">Agent Email</label>
-          <input
-            value={user?.email}
-            readOnly
-            className="input input-bordered w-full bg-gray-100"
-          />
-        </div>
+          <button disabled={isPending} className="btn btn-primary w-full">
+            {isPending ? "Adding..." : "Add Property"}
+          </button>
+        </form>
 
-        <button disabled={isPending} className="btn btn-primary w-full">
-          {isPending ? "Adding..." : "Add Property"}
-        </button>
-      </form>
-
-      {isSuccess && (
-        <p className="text-green-500 mt-2">Property added successfully!</p>
-      )}
-      {isError && <p className="text-red-500 mt-2">Failed to add property.</p>}
-    </div>
+        {isSuccess && (
+          <p className="text-green-500 mt-2">Property added successfully!</p>
+        )}
+        {isError && (
+          <p className="text-red-500 mt-2">Failed to add property.</p>
+        )}
+      </div>
+    </>
   );
 };
 
