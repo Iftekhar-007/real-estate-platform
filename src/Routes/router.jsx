@@ -26,6 +26,8 @@ import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import UserRoute from "./UserRoute";
 import DashHome from "../Layouts/Dashboard/DashHome";
+import UpdateProperty from "../Pages/UpdateProperty";
+import PropertyDetails from "../Pages/PropertyDetails";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/allproperties",
-        Component: AllProperties,
+        // Component: AllProperties,
+        element: (
+          <PrivateRoutes>
+            <AllProperties></AllProperties>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/properties/details/:id",
+        element: (
+          <PrivateRoutes>
+            <PropertyDetails></PropertyDetails>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
@@ -123,6 +138,16 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "update-property/:id",
+        element: (
+          <PrivateRoutes>
+            <AgentRoute>
+              <UpdateProperty></UpdateProperty>
+            </AgentRoute>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "sold-properties",
         // Component: SoldProperties,
         element: (
@@ -140,6 +165,7 @@ const router = createBrowserRouter([
           </AgentRoute>
         ),
       },
+
       {
         path: "admin-profile",
         // Component: AdminProfile,

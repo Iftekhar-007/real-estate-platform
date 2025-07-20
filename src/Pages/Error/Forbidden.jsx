@@ -4,7 +4,7 @@ const Forbidden = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 text-center p-4">
       <img
-        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40_deadlock%2Funauthorised-access-page-on-response-403-in-react-4eeb8153010c&psig=AOvVaw0Y0h46GjLRu5zBngJYZZig&ust=1752866312060000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNCFkIHOxI4DFQAAAAAdAAAAABAK"
+        src="https://cdn.vectorstock.com/i/1000v/87/77/website-error-403-forbidden-artwork-depicts-vector-23988777.jpg"
         alt="403 Forbidden"
         className="w-96 mb-6"
       />
