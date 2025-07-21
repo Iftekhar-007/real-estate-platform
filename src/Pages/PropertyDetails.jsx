@@ -212,7 +212,7 @@ const PropertyDetails = () => {
       await axiosSecure.post("/wishlist", {
         propertyId: property._id,
         title: property.title,
-        priceRange: property.priceRange,
+        priceRange: `${property.basePrice}-${property.maxPrice}`,
         mainImage: property.mainImage,
       });
       Swal.fire("Success", "Added to wishlist!", "success");
