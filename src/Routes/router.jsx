@@ -28,6 +28,7 @@ import UserRoute from "./UserRoute";
 import DashHome from "../Layouts/Dashboard/DashHome";
 import UpdateProperty from "../Pages/UpdateProperty";
 import PropertyDetails from "../Pages/PropertyDetails";
+import MakeOffer from "../Pages/MakeOffer";
 
 const router = createBrowserRouter([
   {
@@ -108,6 +109,16 @@ const router = createBrowserRouter([
           <UserRoute>
             <MyReviews></MyReviews>
           </UserRoute>
+        ),
+      },
+      {
+        path: "make-offer/:id",
+        element: (
+          <PrivateRoutes>
+            <UserRoute>
+              <MakeOffer></MakeOffer>
+            </UserRoute>
+          </PrivateRoutes>
         ),
       },
       {
