@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Banner from "./Banner/Banner";
 import Articles from "../Layouts/Articles/Articles";
+import AgentCards from "../Layouts/AgentCard";
 
 const Home = () => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Home = () => {
       <title>Home || Real estate</title>
       <div>
         <Banner></Banner>
-
+        <AgentCards></AgentCards>
         <Articles></Articles>
       </div>
     </>
