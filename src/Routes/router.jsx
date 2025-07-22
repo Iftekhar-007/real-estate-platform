@@ -29,6 +29,7 @@ import DashHome from "../Layouts/Dashboard/DashHome";
 import UpdateProperty from "../Pages/UpdateProperty";
 import PropertyDetails from "../Pages/PropertyDetails";
 import MakeOffer from "../Pages/MakeOffer";
+import Payment from "../Pages/Payment";
 
 const router = createBrowserRouter([
   {
@@ -117,6 +118,16 @@ const router = createBrowserRouter([
           <PrivateRoutes>
             <UserRoute>
               <MakeOffer></MakeOffer>
+            </UserRoute>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "payment/:id",
+        element: (
+          <PrivateRoutes>
+            <UserRoute>
+              <Payment></Payment>
             </UserRoute>
           </PrivateRoutes>
         ),

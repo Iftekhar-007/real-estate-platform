@@ -21,6 +21,15 @@ const MakeOffer = () => {
     },
   });
 
+  const { data: existingOffer, isLoading: checkingOffer } = useQuery({
+    queryKey: ["user-offer", id, user?.email],
+    enabled: !!user?.email,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/offers/check?propertyId=${id}`);
+      return res.data; // { exists: true/false }
+    },
+  });
+
   // ✅ Handle Offer Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +58,11 @@ const MakeOffer = () => {
 
   if (isLoading) return <p>Loading property info...</p>;
   if (!property) return <p>No property found!</p>;
+
+  if (checkingOffer) return <p>Checking your previous offer...</p>;
+  if (existingOffer?.exists) {
+    Swal.fire("You have already made an offer for this property.", "warning");
+  }
 
   return (
     <div className="max-w-xl mx-auto p-6 mt-10 shadow-lg border rounded-xl">
