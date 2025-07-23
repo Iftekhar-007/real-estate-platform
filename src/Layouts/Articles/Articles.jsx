@@ -29,7 +29,7 @@ const articles = [
 const Articles = () => {
   return (
     <div className="py-10 px-4 lg:w-9/12 mx-auto md:px-10 bg-base-100">
-      <h2 className="lg:text-4xl font-bold font-philo text-center mb-8">
+      <h2 className="lg:text-5xl font-bold font-philo text-center mb-8">
         Latest Insights
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -44,6 +44,7 @@ const AddProperty = () => {
 
     formData.append("verificationStatus", "pending");
     formData.append("saleStatus", "available");
+    formData.append("advertised", "false");
 
     mutate(formData);
   };

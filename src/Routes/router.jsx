@@ -30,6 +30,7 @@ import UpdateProperty from "../Pages/UpdateProperty";
 import PropertyDetails from "../Pages/PropertyDetails";
 import MakeOffer from "../Pages/MakeOffer";
 import Payment from "../Pages/Payment";
+import ManageAdvertise from "../Pages/ManageAdvertise";
 
 const router = createBrowserRouter([
   {
@@ -222,6 +223,16 @@ const router = createBrowserRouter([
           <AdminRoute>
             <ManageReviews></ManageReviews>
           </AdminRoute>
+        ),
+      },
+      {
+        path: "manageadvertise",
+        element: (
+          <PrivateRoutes>
+            <AdminRoute>
+              <ManageAdvertise></ManageAdvertise>
+            </AdminRoute>
+          </PrivateRoutes>
         ),
       },
     ],

@@ -224,6 +224,16 @@ const Dashboard = () => {
                       Manage Reviews
                     </NavLink>
                   </li>
+
+                  <li>
+                    <NavLink
+                      to="/dashboard/manageadvertise"
+                      className="font-bold font-philo"
+                    >
+                      <FaComments />
+                      Manage Advertise
+                    </NavLink>
+                  </li>
                 </AdminLink>
               </ul>
 

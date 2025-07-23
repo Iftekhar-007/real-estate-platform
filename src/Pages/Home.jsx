@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import Articles from "../Layouts/Articles/Articles";
 import AgentCards from "../Layouts/AgentCard";
 import LatestReviews from "../Layouts/LatestReviewCarousel";
+import AdvertisedProperties from "./AdvertisedProperties";
 // import LatestReviews from "../Layouts/LatestReviewCarousel";
 // import LatestReviewCarousel from "../Layouts/LatestReviewCarousel";
 
@@ -21,6 +22,7 @@ const Home = () => {
       <title>Home || Real estate</title>
       <div>
         <Banner></Banner>
+        <AdvertisedProperties></AdvertisedProperties>
         <AgentCards></AgentCards>
         {/* <LatestReviewCarousel></LatestReviewCarousel> */}
         <LatestReviews></LatestReviews>
