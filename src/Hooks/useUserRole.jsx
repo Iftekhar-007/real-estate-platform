@@ -15,12 +15,12 @@ const useUserRole = () => {
     enabled: !!user?.email && !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/role/${user.email}`);
-      console.log("🔐 Role response:", res.data);
+      // console.log("🔐 Role response:", res.data);
       return res.data?.role || "user";
     },
   });
 
-  console.log("🎯 Role Hook - User:", user?.email, "Role:", role);
+  // console.log("🎯 Role Hook - User:", user?.email, "Role:", role);
 
   return { role, isLoading };
 };

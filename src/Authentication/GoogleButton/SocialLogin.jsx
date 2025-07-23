@@ -125,7 +125,7 @@ const SocialLogin = () => {
 
         try {
           const response = await axiosInstance.post("/users", userInfo);
-          console.log("User saved to DB:", response.data);
+          // console.log("User saved to DB:", response.data);
         } catch (err) {
           console.error("Error saving user:", err);
         }

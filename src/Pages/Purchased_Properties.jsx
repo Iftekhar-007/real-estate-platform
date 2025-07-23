@@ -5,7 +5,7 @@ import useOffers from "../Hooks/useOffers";
 
 const Purchased_Properties = () => {
   const [offers, loading] = useOffers();
-  console.log(offers);
+  // console.log(offers);
 
   if (loading) return <div>Loading...</div>;
 

@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 // console.log(`apiKey`);
-console.log(firebaseConfig);
+// console.log(firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

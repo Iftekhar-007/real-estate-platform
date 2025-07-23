@@ -14,7 +14,7 @@ const ManageAdvertise = () => {
     },
   });
 
-  console.log(properties);
+  // console.log(properties);
 
   const handleAdvertise = async (id) => {
     try {

@@ -25,17 +25,17 @@ const LogIn = () => {
   const [loginError, setLoginError] = useState("");
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const email = data.email;
     const password = data.password;
 
     signInWithEmailAndPass(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         navigate(from);
       })
       .catch((error) => {
-        console.log("🔥 Firebase error code:", error.code);
+        // console.log("🔥 Firebase error code:", error.code);
 
         if (error.code === "auth/invalid-credential") {
           setLoginError("Email or Password is incorrect.");

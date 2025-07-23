@@ -134,10 +134,10 @@ const Header = () => {
     logOutUser()
       .then(() => {
         navigate("/");
-        console.log("user logged out");
+        // console.log("user logged out");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 

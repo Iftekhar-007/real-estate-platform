@@ -30,15 +30,15 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     // Logout logic here (like Firebase signOut or clearing localStorage)
-    console.log("User logged out");
+    // console.log("User logged out");
 
     logOutUser()
       .then(() => {
-        console.log("user logged out");
+        // console.log("user logged out");
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 

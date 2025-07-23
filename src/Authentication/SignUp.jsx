@@ -88,7 +88,7 @@ const SignUp = () => {
         axiosInstance
           .post("/users", userInfo)
           .then(() => {
-            console.log("User saved to DB");
+            // console.log("User saved to DB");
             toast.success("Account created successfully!");
             navigate("/");
 
@@ -100,7 +100,7 @@ const SignUp = () => {
 
             updateUserProfile(userProfile)
               .then(() => {
-                console.log("Firebase profile updated");
+                // console.log("Firebase profile updated");
                 navigate("/");
               })
               .catch((err) => {
@@ -120,7 +120,7 @@ const SignUp = () => {
 
   const handleImgUpload = async (e) => {
     const image = e.target.files[0];
-    console.log(image);
+    // console.log(image);
 
     const formData = new FormData();
     formData.append("image", image);
