@@ -104,6 +104,7 @@ const PropertyDetails = () => {
       reviewerImage: user.photoURL,
       reviewerEmail: user.email,
       comment,
+      reviewTime: new Date().toISOString(),
     };
 
     addReviewMutation.mutate(newReview);
