@@ -62,3 +62,11 @@ git repo-server-side - https://github.com/Programming-Hero-Web-Course4/b11a12-se
 - MongoDB (No Mongoose)
 - Firebase Admin SDK (for verifying JWT)
 - Stripe API
+
+## 🛡️ Security Measures
+
+- JWT Token verification via Firebase Admin
+- Role validation in both frontend & backend
+- API protection using custom middlewares
+
+---
