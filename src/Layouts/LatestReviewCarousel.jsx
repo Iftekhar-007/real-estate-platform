@@ -7,7 +7,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get("http://localhost:5000/reviews/latest") // Change URL if hosted
+//       .get("https://real-estate-serverside.vercel.app/reviews/latest") // Change URL if hosted
 //       .then((res) => {
 //         setReviews(res.data);
 //         console.log(res.data);
@@ -75,7 +75,7 @@ const LatestReviews = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/reviews/all")
+      .get("https://real-estate-serverside.vercel.app/reviews/all")
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Failed to fetch reviews:", err));
   }, []);
