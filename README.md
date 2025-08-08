@@ -1,15 +1,5 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 
 ## 🏠 Real Estate Platform
@@ -76,4 +66,54 @@ dependencies:
     "swiper": "^11.2.10",
     "tailwindcss": "^4.1.11"
 
+
+    
+---
+## ⚙️ How to Run Locally
+
+# Clone the repositories
+
+bash
+# Client side
+git clone <client-side-repo-link>
+
+# Server side
+git clone <server-side-repo-link>
+
+# Navigate to each folder
+
+bash
+cd client-folder
+cd server-folder
+
+# Install dependencies
+
+bash
+npm install
+
+# Set up environment variables
+
+Create a .env file in both client and server directories.
+
+Add Firebase config, MongoDB URI, Stripe keys, and any other required env variables.
+
+# Run the development servers
+
+bash
+# Client
+npm run dev
+
+# Server
+npm start
+
+# Open in Browser
+Visit: http://localhost:5173/ for the client side.
+
+
+## 🌐 Live Project Links
+Live Site: https://real-estate-8f8a4-e2699.web.app/
+
+Client Repo: https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-Iftekhar-007
+
+Server Repo: https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-Iftekhar-007
 
