@@ -69,15 +69,15 @@ dependencies:
 
     
 ---
-## ⚙️ How to Run Locally
+# ⚙️ How to Run Locally
 
-# Clone the repositories
+## Clone the repositories
 
 bash
-# Client side
+## Client side
 git clone <client-side-repo-link>
 
-# Server side
+## Server side
 git clone <server-side-repo-link>
 
 # Navigate to each folder
@@ -100,17 +100,17 @@ Add Firebase config, MongoDB URI, Stripe keys, and any other required env variab
 # Run the development servers
 
 bash
-# Client
+## Client
 npm run dev
 
-# Server
+## Server
 npm start
 
-# Open in Browser
+## Open in Browser
 Visit: http://localhost:5173/ for the client side.
 
 
-## 🌐 Live Project Links
+# 🌐 Live Project Links
 Live Site: https://real-estate-8f8a4-e2699.web.app/
 
 Client Repo: https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-Iftekhar-007
