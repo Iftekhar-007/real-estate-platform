@@ -17,17 +17,25 @@ const AllProperties = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="text-center min-h-screen place-content-center">
+        <span className="loading loading-spinner text-success"></span>
+      </div>
+    );
 
   return (
-    <div className="lg:w-9/12 mx-auto px-4 lg:px-12 py-8">
-      <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="lg:w-9/12 mx-auto px-6 py-16">
+      <h2 className="lg:text-4xl md:text-3xl text-xl text-center font-bold font-philo text-gray-800">
         All Verified Properties
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 font-[poppins]">
         {properties.map((property) => (
-          <div key={property._id} className="card bg-base-100 shadow-xl border">
+          <div
+            key={property._id}
+            className="card shadow-xl hover:shadow-2xl p-4"
+          >
             <figure>
               <img
                 src={property.mainImage}
@@ -37,11 +45,13 @@ const AllProperties = () => {
             </figure>
 
             <div className="card-body">
-              <h2 className="card-title">{property.title}</h2>
-              <p>
+              <h2 className="card-title text-xl font-semibold text-gray-800">
+                {property.title}
+              </h2>
+              <p className="text-sm text-gray-600">
                 <strong>Location:</strong> {property.location}
               </p>
-              <p>
+              <p className="text-sm text-gray-600">
                 <strong>Agent:</strong> {property.agentName}
               </p>
               <div className="flex items-center gap-2">
@@ -50,10 +60,12 @@ const AllProperties = () => {
                   alt="Agent"
                   className="w-10 h-10 rounded-full"
                 />
-                <span className="badge badge-outline">Agent</span>
+                <span className="badge badge-outline text-sm text-gray-600">
+                  Agent
+                </span>
               </div>
 
-              <p className="mt-2">
+              <p className="mt-2 text-sm text-gray-600">
                 <strong>Status:</strong>{" "}
                 <span
                   className={`badge ${
@@ -66,7 +78,7 @@ const AllProperties = () => {
                 </span>
               </p>
 
-              <p className="mt-1">
+              <p className="mt-1 text-sm text-gray-600">
                 <strong>Price:</strong> ${property.basePrice} - $
                 {property.maxPrice}
               </p>
@@ -76,7 +88,7 @@ const AllProperties = () => {
                   onClick={() =>
                     navigate(`/properties/details/${property._id}`)
                   }
-                  className="btn bg-[#099c9e] text-white btn-sm flex items-center gap-1"
+                  className="btn btn-outline hover:bg-[#B9375D] text-[#B9375D] hover:text-white text-xl  flex items-center gap-1"
                 >
                   <FaSearch /> View Details
                 </button>
