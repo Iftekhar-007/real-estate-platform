@@ -73,9 +73,11 @@ const LatestReviews = () => {
   const intervalTime = 3000; // 3 seconds per slide
   const slideAmount = 320; // adjust based on card width + gap
 
+  // https://real-estate-serverside.vercel.app/reviews/all
+
   useEffect(() => {
     axios
-      .get("https://real-estate-serverside.vercel.app/reviews/all")
+      .get("http://localhost:5000/reviews/all")
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Failed to fetch reviews:", err));
   }, []);
