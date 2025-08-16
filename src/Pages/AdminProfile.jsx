@@ -7,6 +7,7 @@ import { MdEmail } from "react-icons/md";
 // import AxiosSecure from "../../Routes/AxiosSecure";
 import AuthContext from "../Context/AuthContext";
 import AxiosSecure from "../Routes/AxiosSecure";
+import DashboardCharts from "../Layouts/DashboardCharts";
 
 const AdminProfile = () => {
   const { user } = use(AuthContext);
@@ -60,6 +61,8 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
+
+      <DashboardCharts role="admin"></DashboardCharts>
     </div>
   );
 };

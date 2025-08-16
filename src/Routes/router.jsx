@@ -31,6 +31,7 @@ import PropertyDetails from "../Pages/PropertyDetails";
 import MakeOffer from "../Pages/MakeOffer";
 import Payment from "../Pages/Payment";
 import ManageAdvertise from "../Pages/ManageAdvertise";
+import Blogs from "../Pages/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             <AllProperties></AllProperties>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/properties/details/:id",

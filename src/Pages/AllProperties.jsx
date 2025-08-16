@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-// import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { FaCheckCircle, FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import AxiosSecure from "../Routes/AxiosSecure";
 
 const AllProperties = () => {
   const axiosSecure = AxiosSecure();
   const navigate = useNavigate();
+
+  const [search, setSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState("newest");
 
   const { data: properties = [], isLoading } = useQuery({
     queryKey: ["allProperties"],
@@ -24,14 +26,57 @@ const AllProperties = () => {
       </div>
     );
 
+  const filtered = properties.filter((p) =>
+    `${p.title} ${p.location}`.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const sorted = [...filtered].sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    if (isNaN(dateA) || isNaN(dateB)) {
+      console.warn("Invalid date:", a.createdAt, b.createdAt);
+      return 0;
+    }
+
+    return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+  });
+
   return (
     <div className="lg:w-9/12 mx-auto px-6 py-16">
       <h2 className="lg:text-4xl md:text-3xl text-xl text-center font-bold font-philo text-gray-800">
         All Verified Properties
       </h2>
 
+      {/* --- Search & Sort Controls --- */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
+        {/* Search */}
+        <div className="w-full md:w-1/2">
+          <input
+            type="text"
+            placeholder="Search by property title or location"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
+
+        {/* Sort */}
+        <div className="w-full md:w-1/4">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="select select-bordered w-full"
+          >
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      {/* --- Properties Grid --- */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8 font-[poppins]">
-        {properties.map((property) => (
+        {sorted.map((property) => (
           <div
             key={property._id}
             className="card shadow-xl hover:shadow-2xl p-4"
@@ -88,7 +133,7 @@ const AllProperties = () => {
                   onClick={() =>
                     navigate(`/properties/details/${property._id}`)
                   }
-                  className="btn btn-outline hover:bg-[#B9375D] text-[#B9375D] hover:text-white text-sm  flex items-center gap-1"
+                  className="btn btn-outline hover:bg-[#B9375D] text-[#B9375D] hover:text-white text-sm flex items-center gap-1"
                 >
                   <FaSearch /> View Details
                 </button>

@@ -5,6 +5,7 @@ import { FaUser, FaUserShield, FaUserTie } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import AuthContext from "../../Context/AuthContext";
 import AxiosSecure from "../../Routes/AxiosSecure";
+import DashboardCharts from "../../Layouts/DashboardCharts";
 
 const AgentProfile = () => {
   const { user } = use(AuthContext);
@@ -58,6 +59,8 @@ const AgentProfile = () => {
           </div>
         </div>
       </div>
+
+      <DashboardCharts role="agent"></DashboardCharts>
     </div>
   );
 };
