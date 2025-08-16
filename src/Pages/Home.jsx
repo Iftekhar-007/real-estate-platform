@@ -6,6 +6,7 @@ import LatestReviews from "../Layouts/LatestReviewCarousel";
 import AdvertisedProperties from "./AdvertisedProperties";
 import WhyChooseUs from "../Layouts/WhyChooseUs";
 import OurPartners from "../Layouts/OurPartners";
+import CounterSection from "../Layouts/CounterSection";
 // import LatestReviews from "../Layouts/LatestReviewCarousel";
 // import LatestReviewCarousel from "../Layouts/LatestReviewCarousel";
 
@@ -15,8 +16,11 @@ const Home = () => {
       <title>Home || Real estate</title>
       <div>
         <Banner></Banner>
+        <CounterSection></CounterSection>
+
         <AdvertisedProperties></AdvertisedProperties>
         <AgentCards></AgentCards>
+
         {/* <LatestReviewCarousel></LatestReviewCarousel> */}
         <LatestReviews></LatestReviews>
         <div className="bg-gray-100">

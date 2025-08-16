@@ -9,7 +9,7 @@ const Footer = () => {
         <div className=" mb-10">
           <Logo></Logo>
         </div>
-        <p className="font-bold text-gray-600">
+        <p className="font-bold text-gray-600 ">
           ACME Industries Ltd.
           <br />
           Providing reliable tech since 1992

@@ -10,7 +10,7 @@ export default function OurPartners() {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16">
       <div className="lg:w-9/12 mx-auto px-4 text-center">
         <h2 className="lg:text-4xl md:text-3xl text-xl text-center font-bold font-philo text-gray-800">
           Our Partners

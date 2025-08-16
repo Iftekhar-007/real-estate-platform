@@ -88,7 +88,7 @@ const AllProperties = () => {
                   onClick={() =>
                     navigate(`/properties/details/${property._id}`)
                   }
-                  className="btn btn-outline hover:bg-[#B9375D] text-[#B9375D] hover:text-white text-xl  flex items-center gap-1"
+                  className="btn btn-outline hover:bg-[#B9375D] text-[#B9375D] hover:text-white text-sm  flex items-center gap-1"
                 >
                   <FaSearch /> View Details
                 </button>
