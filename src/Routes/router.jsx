@@ -32,6 +32,7 @@ import MakeOffer from "../Pages/MakeOffer";
 import Payment from "../Pages/Payment";
 import ManageAdvertise from "../Pages/ManageAdvertise";
 import Blogs from "../Pages/Blogs";
+import ContactUs from "../Pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/contactus",
+        element: (
+          <PrivateRoutes>
+            <ContactUs></ContactUs>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/properties/details/:id",

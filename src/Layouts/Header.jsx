@@ -63,10 +63,22 @@ const Header = () => {
                     All Properties
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/blogs" className="text-gray-800">
+                    Blogs
+                  </NavLink>
+                </li>
                 {user && (
                   <li>
                     <NavLink to="/dashboard" className="text-gray-800">
                       Dashboard
+                    </NavLink>
+                  </li>
+                )}
+                {user && (
+                  <li>
+                    <NavLink to="/contactus" className="text-gray-800">
+                      Contact Us
                     </NavLink>
                   </li>
                 )}
@@ -88,10 +100,22 @@ const Header = () => {
                   All Properties
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/blogs" className="text-gray-800">
+                  Blogs
+                </NavLink>
+              </li>
               {user && (
                 <li>
                   <NavLink to="/dashboard" className="text-gray-800">
                     Dashboard
+                  </NavLink>
+                </li>
+              )}
+              {user && (
+                <li>
+                  <NavLink to="/contactus" className="text-gray-800">
+                    Contact Us
                   </NavLink>
                 </li>
               )}
