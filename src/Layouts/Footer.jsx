@@ -1,22 +1,10 @@
-// import React from "react";
-
-// const Footer = () => {
-//   return (
-//     <div>
-//       <h2>footer</h2>
-//     </div>
-//   );
-// };
-
-// export default Footer;
-
 import React from "react";
 import Logo from "./Logo";
 // import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className=" mt-24 footer footer-horizontal footer-center bg-[#003146]  text-primary-content p-10">
+    <footer className=" mt-24 footer footer-horizontal footer-center bg-[#24324A]  text-primary-content p-10">
       <aside>
         <div className=" mb-10">
           <Logo></Logo>

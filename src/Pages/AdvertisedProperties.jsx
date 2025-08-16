@@ -15,7 +15,8 @@ const AdvertisedProperties = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading)
+    return <span className="loading loading-spinner text-success"></span>;
 
   if (!properties.length)
     return (
@@ -25,16 +26,16 @@ const AdvertisedProperties = () => {
     );
 
   return (
-    <div className="bg-gray-100 py-16">
+    <div className="bg-gray-100 py-16 px-6">
       <div className="lg:w-9/12 mx-auto">
-        <h2 className="lg:text-5xl text-center font-bold font-philo text-gray-800">
+        <h2 className="lg:text-4xl md:text-3xl text-xl text-center font-bold font-philo text-gray-800">
           Featured Properties
         </h2>
         <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {properties.map((property) => (
             <div
               key={property._id}
-              className="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="card bg-base-100 p-4 shadow-md hover:shadow-xl transition-shadow duration-300"
             >
               <figure>
                 <img
@@ -43,20 +44,20 @@ const AdvertisedProperties = () => {
                   className="h-60 w-full object-cover"
                 />
               </figure>
-              <div className="card-body">
-                <h2 className="card-title text-xl text-primary">
+              <div className="card-body font-[poppins]">
+                <h2 className="card-title text-xl text-gray-800 font-[poppins]">
                   {property.title}
                 </h2>
                 <div className="flex items-center gap-2">
-                  <FaLocationArrow></FaLocationArrow>
-                  <h2 className="">{property.location}</h2>
+                  <h2 className="text-gray-600 text-sm">
+                    Location: {property.location}
+                  </h2>
                 </div>
                 <p className="text-sm text-gray-600">
-                  💰 Price Range:{" "}
-                  {`${property.basePrice} - ${property.maxPrice}`}
+                  Price Range: {`${property.basePrice} - ${property.maxPrice}`}
                 </p>
-                <p className="text-sm">
-                  🔒 Status:{" "}
+                <p className="text-sm text-gray-600">
+                  Status:{" "}
                   <span
                     className={`font-semibold ${
                       property.verificationStatus === "approved"
@@ -71,7 +72,9 @@ const AdvertisedProperties = () => {
                 </p>
                 <div className="card-actions justify-end mt-4">
                   <Link to={`/properties/details/${property._id}`}>
-                    <button className="btn btn-sm btn-primary">Details</button>
+                    <button className="btn text-white bg-[#B9375D] hover:bg-[#b41449]">
+                      View Details
+                    </button>
                   </Link>
                 </div>
               </div>

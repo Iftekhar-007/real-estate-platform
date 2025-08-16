@@ -4,6 +4,8 @@ import Articles from "../Layouts/Articles/Articles";
 import AgentCards from "../Layouts/AgentCard";
 import LatestReviews from "../Layouts/LatestReviewCarousel";
 import AdvertisedProperties from "./AdvertisedProperties";
+import WhyChooseUs from "../Layouts/WhyChooseUs";
+import OurPartners from "../Layouts/OurPartners";
 // import LatestReviews from "../Layouts/LatestReviewCarousel";
 // import LatestReviewCarousel from "../Layouts/LatestReviewCarousel";
 
@@ -17,7 +19,11 @@ const Home = () => {
         <AgentCards></AgentCards>
         {/* <LatestReviewCarousel></LatestReviewCarousel> */}
         <LatestReviews></LatestReviews>
-        <Articles></Articles>
+        <div className="bg-gray-100">
+          <Articles></Articles>
+          <WhyChooseUs></WhyChooseUs>
+        </div>
+        <OurPartners></OurPartners>
       </div>
     </>
   );

@@ -230,7 +230,7 @@ const Header = () => {
                 <Tooltip id="user-tooltip" place="bottom" className="z-50" />
                 <NavLink
                   onClick={handleLogOut}
-                  className="btn  text-[#B9375D] btn-outline"
+                  className="btn  text-[#B9375D] hover:bg-[#B9375D] hover:text-white btn-outline"
                 >
                   Log Out
                 </NavLink>

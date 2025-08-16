@@ -30,9 +30,7 @@ const Banner = () => {
     <div className="w-full h-[800px] md:h-[700px] relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         className="w-full h-full"
       >

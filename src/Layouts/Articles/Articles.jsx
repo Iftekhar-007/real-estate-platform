@@ -28,33 +28,30 @@ const articles = [
 
 const Articles = () => {
   return (
-    <div className="py-10 px-4 lg:w-9/12 mx-auto md:px-10 bg-base-100">
-      <h2 className="lg:text-5xl font-bold font-philo text-center mb-8">
-        Latest Insights
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {articles.map((article, index) => (
-          <div key={index} className="card bg-base-200 shadow-xl">
-            <figure>
-              <img
-                src={article.image}
-                alt={article.heading}
-                className="w-full h-56 object-cover"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title font-philo">{article.heading}</h2>
-              <p className="text-sm text-gray-600 font-philo">
-                {article.subtext}
-              </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-sm font-philo btn-primary">
-                  {article.cta}
-                </button>
+    <div className="px-6 lg:w-9/12 mx-auto">
+      <div className="pt-16">
+        <h2 className="lg:text-4xl md:text-3xl text-xl text-center font-bold font-philo text-gray-800">
+          Latest Insights
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
+          {articles.map((article, index) => (
+            <div key={index} className="card bg-base-200 shadow-xl p-4">
+              <figure>
+                <img
+                  src={article.image}
+                  alt={article.heading}
+                  className="w-full h-56 object-cover"
+                />
+              </figure>
+              <div className="card-body font-[poppins]">
+                <h2 className="card-title text-xl text-gray-800">
+                  {article.heading}
+                </h2>
+                <p className="text-sm text-gray-600 ">{article.subtext}</p>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
