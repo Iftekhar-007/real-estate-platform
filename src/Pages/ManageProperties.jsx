@@ -159,7 +159,8 @@ const ManageProperties = () => {
     });
   };
 
-  if (isLoading) return <p>Loading properties...</p>;
+  if (isLoading)
+    return <span className="loading loading-spinner text-accent"></span>;
   if (isError) return <p className="text-red-600">Error: {error.message}</p>;
 
   return (

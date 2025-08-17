@@ -63,7 +63,8 @@ const ManageUsers = () => {
     });
   };
 
-  if (isLoading) return <div className="text-center">Loading...</div>;
+  if (isLoading)
+    return <span className="loading loading-spinner text-accent"></span>;
 
   return (
     <div className="overflow-x-auto">

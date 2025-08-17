@@ -22,7 +22,8 @@ const AdminProfile = () => {
     enabled: !!user?.email,
   });
 
-  if (isLoading) return <p className="text-center mt-10">Loading profile...</p>;
+  if (isLoading)
+    return <span className="loading loading-spinner text-accent"></span>;
 
   return (
     <div>

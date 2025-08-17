@@ -63,7 +63,8 @@ const MyAddedProperties = () => {
     navigate(`/dashboard/update-property/${id}`);
   };
 
-  if (isLoading) return <p className="text-center py-10">Loading...</p>;
+  if (isLoading)
+    return <span className="loading loading-spinner text-accent"></span>;
 
   return (
     <div className="px-4 lg:px-12 py-8">
