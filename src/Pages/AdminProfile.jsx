@@ -61,8 +61,6 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
-
-      <DashboardCharts role="admin"></DashboardCharts>
     </div>
   );
 };

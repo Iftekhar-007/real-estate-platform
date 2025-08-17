@@ -59,8 +59,6 @@ const AgentProfile = () => {
           </div>
         </div>
       </div>
-
-      <DashboardCharts role="agent"></DashboardCharts>
     </div>
   );
 };

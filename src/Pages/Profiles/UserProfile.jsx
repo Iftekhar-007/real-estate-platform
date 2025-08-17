@@ -59,8 +59,6 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-
-      <DashboardCharts role="user"></DashboardCharts>
     </div>
   );
 };

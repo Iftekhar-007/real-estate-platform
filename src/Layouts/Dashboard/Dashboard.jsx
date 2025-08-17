@@ -10,6 +10,7 @@ import {
   FaListAlt,
   FaPlusSquare,
   FaShoppingCart,
+  FaStackOverflow,
   FaStar,
   FaTasks,
   FaUser,
@@ -25,7 +26,8 @@ import UserLink from "../../Routes/UserLink";
 // import useUserRole from "../../Hooks/useUserRole";
 
 const Dashboard = () => {
-  const { logOutUser } = use(AuthContext);
+  const { logOutUser, user } = use(AuthContext);
+  // const { user } = use(AuthContext);
   // const { role } = useUserRole();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -109,6 +111,15 @@ const Dashboard = () => {
                   </li>
                   <li>
                     <NavLink
+                      to={`/dashboard/useroverview/${user.email}`}
+                      className="font-bold font-philo"
+                    >
+                      <FaStackOverflow />
+                      Overview
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
                       to="/dashboard/purchased-properties"
                       className="font-bold font-philo"
                     >
@@ -129,15 +140,15 @@ const Dashboard = () => {
 
                 {/* Agent links */}
                 <AgentLink>
-                  {/* <li>
+                  <li>
                     <NavLink
-                      to="/dashboard/agent-profile"
+                      to={`/dashboard/agentoverview/${user.email}`}
                       className="font-bold font-philo"
                     >
-                      <FaUserTie />
-                      Agent Profile
+                      <FaStackOverflow />
+                      Overview
                     </NavLink>
-                  </li> */}
+                  </li>
                   <li>
                     <NavLink
                       to="/dashboard/add-property"
@@ -188,6 +199,15 @@ const Dashboard = () => {
                       Admin Profile
                     </NavLink>
                   </li> */}
+                  <li>
+                    <NavLink
+                      to={`/dashboard/adminoverview`}
+                      className="font-bold font-philo"
+                    >
+                      <FaStackOverflow />
+                      Overview
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink
                       to="/dashboard/manage-properties"

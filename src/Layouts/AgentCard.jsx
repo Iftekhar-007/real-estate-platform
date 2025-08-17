@@ -25,7 +25,7 @@ const AgentCards = () => {
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:w-9/12 mx-auto py-8">
-        {agents.slice(0, 3).map((agent) => (
+        {agents.slice(3, 6).map((agent) => (
           <div key={agent._id} className="card bg-base-100 shadow-sm p-4">
             <figure>
               <img

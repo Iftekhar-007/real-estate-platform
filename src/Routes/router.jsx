@@ -33,6 +33,9 @@ import Payment from "../Pages/Payment";
 import ManageAdvertise from "../Pages/ManageAdvertise";
 import Blogs from "../Pages/Blogs";
 import ContactUs from "../Pages/ContactUs";
+import UserOverview from "./UserOverview";
+import AgentOverview from "./AgentOverview";
+import AdminOverview from "./AdminOverview";
 
 const router = createBrowserRouter([
   {
@@ -46,11 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/allproperties",
         // Component: AllProperties,
-        element: (
-          <PrivateRoutes>
-            <AllProperties></AllProperties>
-          </PrivateRoutes>
-        ),
+        element: <AllProperties></AllProperties>,
       },
       {
         path: "/blogs",
@@ -148,12 +147,32 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "useroverview/:email",
+        element: (
+          <PrivateRoutes>
+            <UserRoute>
+              <UserOverview></UserOverview>
+            </UserRoute>
+          </PrivateRoutes>
+        ),
+      },
+      {
         path: "agent-profile",
         // Component: AgentProfile,
         element: (
           <AgentRoute>
             <AgentProfile></AgentProfile>
           </AgentRoute>
+        ),
+      },
+      {
+        path: "agentoverview/:email",
+        element: (
+          <PrivateRoutes>
+            <AgentRoute>
+              <AgentOverview></AgentOverview>
+            </AgentRoute>
+          </PrivateRoutes>
         ),
       },
       {
@@ -210,6 +229,16 @@ const router = createBrowserRouter([
           <AdminRoute>
             <AdminProfile></AdminProfile>
           </AdminRoute>
+        ),
+      },
+      {
+        path: "adminoverview",
+        element: (
+          <PrivateRoutes>
+            <AdminRoute>
+              <AdminOverview></AdminOverview>
+            </AdminRoute>
+          </PrivateRoutes>
         ),
       },
       {
