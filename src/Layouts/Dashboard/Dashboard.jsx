@@ -98,15 +98,6 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <UserLink>
-                  {/* <li>
-                    <NavLink
-                      to="/dashboard/userprofile"
-                      className="font-bold font-philo"
-                    >
-                      <FaUser />
-                      My Profile
-                    </NavLink>
-                  </li> */}
                   <li>
                     <NavLink
                       to="/dashboard/wishlist"
