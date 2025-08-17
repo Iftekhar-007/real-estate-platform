@@ -13,7 +13,7 @@ const LatestReviews = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/reviews/all")
+      .get("https://real-estate-serverside.vercel.app/reviews/all")
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Failed to fetch reviews:", err));
   }, []);
