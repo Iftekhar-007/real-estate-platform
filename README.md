@@ -13,7 +13,7 @@ Agents can list properties, manage offers, and interact with buyers, while Admin
 ---
 
 ## 🖼️ Screenshot
-![Real Estate Platform Screenshot](https://i.postimg.cc/YSsvTSsT/screencapture-real-estate-8f8a4-e2699-web-app-2025-08-08-11-57-14.png)  
+![Real Estate Platform Screenshot](https://i.ibb.co.com/4nbDDjSs/real-estate-8f8a4-e2699-web-app.png)  
 
 
 ---
